@@ -1,6 +1,6 @@
 M=main
 
-include 
+include make/dep.mk
 
 $M.pdf: $M.tex
 	pdflatex $< && pdflatex $<
