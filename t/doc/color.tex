@@ -1,0 +1,74 @@
+\subsection{colors}\label{colors}
+
+Colors are activated by \texttt{\#define\ multi\_solvent\ true}.
+
+Blue: represents outer solvent particles Red: represents inner solvent
+particles
+
+Color is an integer field. It is packed into \texttt{cloud.md} along
+with \texttt{pp} arrays. Interactions (fsi, dpdl, dpdr, wall) get
+\texttt{forces::Pa} from Clouds:
+
+\begin{verbatim}
+namespace forces {
+struct Pa {
+    float x, y, z, vx, vy, vz;
+    int kind;
+    int color;
+};
+\end{verbatim}
+
+and passes it to \texttt{forces::gen}. See \texttt{src/forces/imp.h} which
+decides which pair force to apply based on \texttt{int\ color}. It knows
+about
+
+\begin{verbatim}
+enum {BLUE_COLOR, RED_COLOR};
+\end{verbatim}
+
+And miss-uses \texttt{gammadpd\_solv}, \texttt{gammadpd\_rbc} and
+\texttt{gammadpd\_wall} to set DPD parameters for blue-blue, red-red,
+and red-blue interactions.
+
+In \texttt{sim::} colors are stored in
+
+\begin{verbatim}
+flu::QuantsI     qc;
+\end{verbatim}
+
+where
+
+\begin{verbatim}
+struct QuantsI {
+    int *ii, *ii0;
+    int *ii_hst;
+ };
+\end{verbatim}
+
+in \texttt{sim::sim\_gen()} gets colors by calling
+
+\begin{verbatim}
+flu::gen_quants(&o::q, &o::qc);`
+\end{verbatim}
+
+which has a part different in different \texttt{u.md}. Hard-coded
+color schemes are
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{flu/\_ussr} : all \texttt{BLUE\_COLOR} (default)
+\item
+  \texttt{flu/\_zurich} : flag of zurich in XY
+\item
+  \texttt{flu/\_bangladesh} : a sphere in the center
+\item
+  \texttt{flu/\_france} : flag of france in XY
+\end{itemize}
+
+Example \url{run/color/run}
+
+\subsection{recolor}\label{recolor}
+
+Re-coloring is done every \texttt{freq\_color} timesteps.
+\texttt{freq\_color=0} means no re-coloring.

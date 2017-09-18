@@ -1,6 +1,7 @@
 \documentclass{article}
 
 \input{t/pkg.tex}
+\input{t/def.tex}
 \input{t/title.tex}
 
 \begin{document}
@@ -12,8 +13,19 @@
 \section{Restart}
 \input{t/restart.tex}
 
+\section{Colors}
+\input{t/color.tex}
+
+\section{Examples}
+Examples of simulation using ``colors''.
+
+\subsection{Double poiusell flow}
 \input{t/flow.tex}
+
+\subsection{Drops in double poiusell flow}
 \input{t/drop.tex}
+
+\subsection{Merging drops in double poiusell flow}
 \input{t/two.tex}
 
 \appendix
@@ -22,5 +34,8 @@
 
 \section{BOP (brick of particles)}\label{a:bop}
 \input{t/doc/bop.tex}
+
+\section{Colors in \texttt{uDeviceX}}\label{a:color}
+\input{t/doc/color.tex}
 
 \end{document}
