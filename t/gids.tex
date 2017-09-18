@@ -1,7 +1,7 @@
 An optional integer field containing ``global indices'', i.e. a unique integer per particle, can be added in \texttt{uDeviceX}. This field has important applications for post processing. It allows for example to compute the Diffusion coefficient
 \[
-D = \frac{<x^2>(t)}{3 t},
+D = \frac{\left< x^2 \right>(t)}{3 t},
 \]
-where $<x^2>(t)$ is the mean square displacement of particles after a time $t$. The latter can only be computed if one has access to the global indices of the particles.
+where $\left< x^2 \right>(t)$ is the mean square displacement of particles after a time $t$. The latter can only be computed if one has access to the global indices of the particles.
 
 Global indices can be also used to compute average velocities of particles from their displacement over a time $T$. This is given by the simple relation $\bar{v}_i(t) = [x_i(t + T) - x_i(t)] / T$, where $i$ is the global index of the particle. With global indices, it needs only two dumps of particles instead of averaging over many timesteps.
