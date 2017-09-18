@@ -1,3 +1,16 @@
+The benefits of the restartable simulation are huge: computational
+time is not wasted on transient part of the simulation, external and
+not nececerly high performance tools can be used to
+setup \texttt{uDeviceX} simulations, multi-stage simulations with very
+different govering equations a every stage are possible, debuging and
+testing is much simpler.
+
 Restart is a dump of the state of \texttt{uDeviceX} simulation:
 position of every solvent, wall, and RBC particles are dumped. State
-of solid object can be recovered from regular ``solid diag'' output.
+of solid objects can be recovered from regular ``solid diag'' output.
+
+See~\ref{a:restart} for the details of the restart file
+organization. The format of the restart files is the same as for
+output files and is described in~\ref{a:bop}. It does not use external
+libraries and generation of such files is trivial in any programming
+language.

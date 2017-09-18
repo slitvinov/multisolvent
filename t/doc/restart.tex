@@ -1,0 +1,24 @@
+Restart stores simulation variables of solvent, wall, rbcs and rigid
+bodies under the following file naming:
+
+\begin{verbatim}
+strt/[code]/[XXX].[YYY].[ZZZ]/[ttt].[ext]
+\end{verbatim}
+
+where: * \texttt{{[}code{]}} is \texttt{flu} (solvent), \texttt{wall},
+\texttt{rbc} or \texttt{rig} (rigid bodies) *
+\texttt{{[}XXX{]}.{[}YYY{]}.{[}ZZZ{]}} are the coordinates of the
+processor (no dir if single processor) * \texttt{{[}ttt{]}} is the id of
+the restart; it has a magic value \texttt{final} for the last step of
+simulation and is used to start from there. * \texttt{{[}ext{]}} is the
+extension of the file: \texttt{bop} for particles, \texttt{ss} for
+solids, \texttt{id.bop} for particle ids
+
+Special case:
+
+\begin{verbatim}
+strt/[code]/[magic name].[ext]
+\end{verbatim}
+
+example: template frozen particles from rigid bodies or walls:
+\texttt{templ}

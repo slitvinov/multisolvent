@@ -1,0 +1,61 @@
+\subsection{Introduction}\label{introduction}
+
+\texttt{file.bop} format (ascii, \texttt{\textless{}N\textgreater{}} is
+the number of particles):
+
+\begin{verbatim}
+ <N>
+ DATA_FILE: <file.values>
+ DATA_FORMAT: <float|ascii|double|int|iascii>
+ VARIABLES: <x> <y> <z> <vx> <vy> <vz> <id> ...
+\end{verbatim}
+
+\texttt{file.values} format:
+
+\begin{verbatim}
+x[0] y[0] z[0] vx[0] vy[0] vz[0] id[0]
+...
+
+x[N-1] y[N-1] ...
+\end{verbatim}
+
+The \texttt{ascii} format is assumed to be single precision floating
+points data.\\
+Th \texttt{iascii} format is the ascii version of integer data.
+
+\subsection{Installation}\label{installation}
+
+The following will install the binaries into \texttt{\$\{HOME\}/bin}.
+This folder needs to be in the \texttt{PATH} variable. Furthermore, it
+installs the headers and library into
+\texttt{\$\{HOME\}/prefix/bop/include} and
+\texttt{\$\{HOME\}/prefix/bop/lib}, respectively.
+
+\begin{verbatim}
+make && make install
+\end{verbatim}
+
+\subsection{Usage}\label{usage}
+
+Convert bop files \texttt{in1.bop}, \texttt{in2.bop}, \ldots{},
+\texttt{inN.bop} into a single vtk file \texttt{out.vtk}:
+
+\begin{verbatim}
+bop2vtk out.vtk in1.bop in2.bop ... inN.bop
+\end{verbatim}
+
+Dump ascii data from bop files \texttt{in1.bop}, \texttt{in2.bop},
+\ldots{}, \texttt{inN.bop} into \texttt{out.txt}:
+
+\begin{verbatim}
+bop2txt in1.bop in2.bop ... inN.bop > out.txt
+\end{verbatim}
+
+\subsection{Testing}\label{testing}
+
+Uses \texttt{atest} framework (https://gitlab.ethz.ch/mavt-cse/atest)
+
+\begin{verbatim}
+atest bop2txt.cpp
+atest bop2vtk.cpp
+\end{verbatim}
